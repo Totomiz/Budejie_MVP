@@ -19,6 +19,7 @@ public abstract class NavigationBuilderAdapter implements NavigationBuilder{
 
     private View.OnClickListener leftClickListener;
     private View.OnClickListener rightClickListener;
+    private View toolbarView;
 
     public NavigationBuilderAdapter(Context context) {
         this.context = context;
@@ -78,6 +79,7 @@ public abstract class NavigationBuilderAdapter implements NavigationBuilder{
             viewGroup.removeView(inflate);
         }
         root.addView(inflate,0);
+        toolbarView=inflate;
         return this;
     }
 
@@ -85,4 +87,8 @@ public abstract class NavigationBuilderAdapter implements NavigationBuilder{
      * @return 自定义布局id
      */
     public abstract int getLayoutId();
+
+    public View getContentView(){
+        return toolbarView;
+    }
 }
