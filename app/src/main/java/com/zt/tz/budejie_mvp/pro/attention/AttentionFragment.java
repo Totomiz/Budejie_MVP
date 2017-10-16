@@ -1,8 +1,10 @@
 package com.zt.tz.budejie_mvp.pro.attention;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.zt.tz.budejie_mvp.R;
+import com.zt.tz.budejie_mvp.pro.attention.view.navigation.AttentionNavigationBuilder;
 import com.zt.tz.budejie_mvp.pro.base.view.BaseFragment;
 
 /**
@@ -17,7 +19,12 @@ public class AttentionFragment extends BaseFragment {
 
     @Override
     public void initContentView(View viewContent) {
+        initToolBar(viewContent);
+    }
 
+    private void initToolBar(View viewContent) {
+        AttentionNavigationBuilder builder=new AttentionNavigationBuilder(getContext());
+        builder.createAndBind((ViewGroup)viewContent);
     }
 
 
