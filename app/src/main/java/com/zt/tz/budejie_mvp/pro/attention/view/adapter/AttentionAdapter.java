@@ -4,7 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.zt.tz.budejie_mvp.pro.essense.EssenceVideoFragment;
+import com.zt.tz.budejie_mvp.pro.attention.AttentionListFragment;
+import com.zt.tz.budejie_mvp.pro.attention.AttentionSubscribeFragment;
 
 import java.util.List;
 
@@ -27,11 +28,17 @@ public class AttentionAdapter extends FragmentStatePagerAdapter{
     @Override
     public Fragment getItem(int position) {
         //根据data条目创建一个子专栏
-        EssenceVideoFragment fragment=new EssenceVideoFragment();
         String[] data=mDataList.get(position).split(SPLIT_STRING);
-        fragment.setType(Integer.parseInt(data[1]));
-        fragment.setTitle(data[0]);
-        return fragment;
+        if(position==0){
+            AttentionSubscribeFragment subscribeFragment=new AttentionSubscribeFragment();
+            subscribeFragment.setType(Integer.parseInt(data[1]));
+            subscribeFragment.setTitle(data[0]);
+            return subscribeFragment;
+        }
+        AttentionListFragment attentionListFragment=new AttentionListFragment();
+        attentionListFragment.setType(Integer.parseInt(data[1]));
+        attentionListFragment.setTitle(data[0]);
+        return attentionListFragment;
     }
 
     @Override
